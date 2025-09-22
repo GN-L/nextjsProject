@@ -71,7 +71,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
     amount: formData.get('amount'),
     status: formData.get('status'),
   });
-  console.log(validatedFields.error.flatten())
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
@@ -96,7 +95,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 
 // 删
 export async function deleteInvoice(id: string) {
-    throw new Error('Failed to Delete Invoice');
     try {
         await sql`DELETE FROM invoices WHERE id = ${id}`;
     } catch (error) {
